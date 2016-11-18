@@ -1,0 +1,24 @@
+{
+  "name": "leaflet-related-label",
+  "description": "Leaflet Related Label",
+  "main": "dist/leaflet-related-label.js",
+  "authors": [
+    "Johannes Rudolph <johannes.rudolph@gmx.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/PowerPan/leaflet-related-label",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components/",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "leaflet": "^1.0.1"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  }
+}
