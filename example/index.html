@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>intec PT Label example</title>
+    <title>Leaflet Related Label Example</title>
     <meta charset="utf-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../components/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="../dist/intec.ptlabel.css" />
+    <link rel="stylesheet" href="../dist/leaflet-related-label.css" />
     <link rel="stylesheet" href="../components/font-awesome/css/font-awesome.min.css" />
 </head>
 <body>
 <div id="map" style="left: 0; right: 0; top: 0; bottom: 0;position: fixed"></div>
 <script type="text/javascript" src="../components/leaflet/dist/leaflet-src.js"></script>
-<script type="text/javascript" src="../dist/intec.ptlabel.js"></script>
+<script type="text/javascript" src="../dist/leaflet-related-label.js"></script>
 <script>
     var position = L.latLng(54.15, 8.0);
     var map = L.map('map');
@@ -24,28 +24,28 @@
         maxZoom: 18
     }).addTo(map);
 
-    var ptLayer = new L.FeatureGroup();
-    var markerLayer = new L.FeatureGroup();
-    var shipLayer = new L.FeatureGroup();
-    layersControl = new L.Control.Layers(null,{"Ships" : shipLayer,"Marker" : markerLayer, "People Tracking" : ptLayer},{collapsed: false});
+    var labelLayer = new L.FeatureGroup();
+    var marker1Layer = new L.FeatureGroup();
+    var marker2Layer = new L.FeatureGroup();
+    layersControl = new L.Control.Layers(null,{"Marker Layer 1" : marker1Layer,"Marker Layer 2" : marker2Layer, "Label Layer" : labelLayer},{collapsed: false});
     layersControl.addTo(map);
-    markerLayer.addTo(map);
-    shipLayer.addTo(map);
-    //new L.marker([54.15, 8.0]).bindPtLabel("5", { noHide: true }).addTo(map);
+    marker1Layer.addTo(map);
+    marker2Layer.addTo(map);
+    labelLayer.addTo(map);
 
-    var marker = new L.marker([54.18, 8.25]).addTo(markerLayer);
-    var ptLabel = new L.IntecPtLabel(marker,ptLayer);
-    ptLabel.setContent("4");
-    ptLayer.addLayer(ptLabel);
+    var marker1 = new L.marker([54.18, 8.25]).addTo(marker1Layer);
+    var label1 = L.relatedLabel(marker1,labelLayer);
+    label1.setContent("Label Marker 1");
+    labelLayer.addLayer(label1);
 
-    var ship = new L.marker([54.08, 8.35]).addTo(shipLayer);
-    var ptLabel2 = new L.IntecPtLabel(ship,ptLayer);
-    ptLabel2.setContent("12");
-    ptLayer.addLayer(ptLabel2);
+    var marker2 = new L.marker([54.08, 8.35]).addTo(marker2Layer);
+    var label2 = L.relatedLabel(marker2,labelLayer);
+    label2.setContent("Label Marker 2");
+    labelLayer.addLayer(label2);
 
     setTimeout(function () {
-        marker.setLatLng([54.08, 8.15])
-    },1000);
+        marker1.setLatLng([54.08, 8.15])
+    },2000);
 
 
 </script>
