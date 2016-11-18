@@ -43,8 +43,6 @@ L.RelatedLabel = L.Layer.extend({
 
 		this.setLatLng(this._related.getLatLng());
 		this._related.on("move",this._relatedMove,this);
-		var that = this;
-
 	},
 
 	/**
@@ -404,3 +402,14 @@ L.RelatedLabel = L.Layer.extend({
 		}
 	}
 });
+
+/**
+ *
+ * @param related
+ * @param parrent
+ * @param options
+ * @returns {*}
+ */
+L.relatedLabel = function (related, parrent, options) {
+	return new L.RelatedLabel(related, parrent, options);
+};
