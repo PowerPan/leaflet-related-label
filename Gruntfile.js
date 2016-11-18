@@ -22,17 +22,9 @@ module.exports = function (grunt) {
         concat: {
             dist: {
                 src: [  'src/copyright.js',
-                        //'src/intro.js',
-                        'src/Label.js',
-                        /*'src/BaseMarkerMethods.js',
-                        'src/Map.Label.js',
-                        'src/Path.Label.js',
-                        'src/CircleMarker.Label.js',
-                        'src/FeatureGroup.Label.js',
-                        'src/Marker.Label.js',*/
-                        /*'src/outro.js' */],
-                dest: 'dist/<%= pkg.name %>.js',
-            },
+                        'src/Label.js'],
+                dest: 'dist/<%= pkg.name %>.js'
+            }
         },
 
         jshint: {
@@ -64,7 +56,7 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');

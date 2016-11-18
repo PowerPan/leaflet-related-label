@@ -14,7 +14,8 @@ L.RelatedLabel = L.Layer.extend({
 		direction: 'right',
 		offset: [12, -15], // 6 (width of the label triangle) + 6 (padding)
 		opacity: 0.9,
-		zoomAnimation: true
+		zoomAnimation: true,
+		events: ['dblclick', 'mousedown', 'mouseover', 'mouseout', 'contextmenu']
 	},
 
 	/**
@@ -326,14 +327,13 @@ L.RelatedLabel = L.Layer.extend({
 	_initInteraction: function () {
 		if (!this.options.clickable) { return; }
 
-		var container = this._container,
-			events = ['dblclick', 'mousedown', 'mouseover', 'mouseout', 'contextmenu'];
+		var container = this._container;
 
 		L.DomUtil.addClass(container, 'leaflet-clickable');
 		L.DomEvent.on(container, 'click', this._onMouseClick, this);
 
-		for (var i = 0; i < events.length; i++) {
-			L.DomEvent.on(container, events[i], this._fireMouseEvent, this);
+		for (var i = 0; i < this.options.events.length; i++) {
+			L.DomEvent.on(container, this.options.events[i], this._fireMouseEvent, this);
 		}
 	},
 
@@ -344,14 +344,13 @@ L.RelatedLabel = L.Layer.extend({
 	_removeInteraction: function () {
 		if (!this.options.clickable) { return; }
 
-		var container = this._container,
-			events = ['dblclick', 'mousedown', 'mouseover', 'mouseout', 'contextmenu'];
+		var container = this._container;
 
 		L.DomUtil.removeClass(container, 'leaflet-clickable');
 		L.DomEvent.off(container, 'click', this._onMouseClick, this);
 
-		for (var i = 0; i < events.length; i++) {
-			L.DomEvent.off(container, events[i], this._fireMouseEvent, this);
+		for (var i = 0; i < this.options.events.length.length; i++) {
+			L.DomEvent.off(container, this.options.events[i], this._fireMouseEvent, this);
 		}
 	},
 
